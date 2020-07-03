@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/munchkinhalfling/npm-clone/depinstall"
 	"github.com/munchkinhalfling/npm-clone/executil"
 )
 
@@ -42,5 +43,6 @@ func main() {
 	executil.Run("rm", os.Args[1]+".tar.gz")
 	executil.Run("mv", "package", os.Args[1])
 	executil.Run("rmdir", "package")
+	depinstall.InstallDeps(os.Args[1])
 	fmt.Println("Done!")
 }
